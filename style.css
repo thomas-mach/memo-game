@@ -257,19 +257,19 @@ footer {
     }
 
     .card {
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
     }
 
     .board {
-        width: 360px;
-        height: 360px;
+        width: 300px;
+        height: 300px;
     }
 
     .time-bar,
     .time-bar2 {
-        width: 360px;
+        width: 300px;
     }
 
     .board-box {
@@ -280,24 +280,24 @@ footer {
         margin-top: 10px;
         padding: 0;
         gap: 0px;
-        width: 360px;
+        width: 300px;
         height: 260px;
         font-size: 24px;
     }
 
     .game {
-        width: 360px;
+        width: 300px;
     }
 
     .logo span {
-        font-size: 80px;
+        font-size: 60px;
     }
 
     .logo-under {
         top: 20px;
-        left: 150px;
-        width: 60px;
-        height: 30px;
+        left: 118px;
+        width: 45px;
+        height: 20px;
     }
 
     .lifesaver {
@@ -316,5 +316,14 @@ footer {
 
     footer {
         padding: 0px 5px;
+
+    }
+
+    main {
+        height: 85%;
+    }
+
+    header {
+        height: 10%;
     }
 }
