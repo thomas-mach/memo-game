@@ -8,14 +8,15 @@ const battery = new Audio("./mp3/battery.mp3")
 const bell = new Audio("./mp3/bells_bell.mp3")
 const match = new Audio("./mp3/style_coin.mp3")
 const lose = new Audio("./mp3/lose.mp3")
-const playButton = document.querySelector('.play-button')
+const ButtonsBox = document.querySelector('.play-button-box')
+// const resetGameButton = document.querySelector('.reset-button')
 const timeBar = document.querySelector('.time-bar-placeholder')
 const board = document.querySelector('.board')
 const atempts = document.querySelector('.atempts')
 const crono = document.querySelector('.crono')
 const inArowCount = document.querySelector('.in-a-row')
 const lifesaverBox = document.querySelector('.lifesaver-box')
-
+let isGameResetting = false;
 let lifesaver = ''
 let cardsToCompare = []
 let isChacking = false
@@ -30,9 +31,9 @@ let inArow = 0
 
 createBoard()
 startIconCycle()
-
+ButtonsBox.innerHTML = `<button class="play-button">PLAY</button>`
+const playButton = document.querySelector('.play-button')
 playButton.addEventListener('click', () => {
-
     bell.play()
     isRunningGame = true;
     playGame()
@@ -43,11 +44,11 @@ function playGame() {
         playButton.disabled = true
     stopIconCycle()
     shuffleArray(cards)
-    creareGame()
+    createGame()
     startTimer()
 }
 
-function creareGame() {
+function createGame() {
     board.innerHTML = ''
     inArowCount.innerHTML = '0'
     crono.textContent = '00:00'
@@ -55,7 +56,6 @@ function creareGame() {
     inArow = 0
     atemptsCount = 0
     seconds = 180
-
     cards.forEach((el, i) => {
 
         const card = document.createElement('div')
@@ -83,9 +83,10 @@ function creareGame() {
                 if (isChacking) {
                     return
                 }
-                if (!card.classList.contains('cover') || cardsToCompare.length >= 2) {
-                }
-                click.play()
+                // if (!card.classList.contains('cover') || cardsToCompare.length >= 2) {
+                // }
+                click.currentTime = 0
+                click.play();
                 card.classList.remove('cover')
                 activeCard(i)
                 pushCard(cardsToCompare, card)
@@ -100,10 +101,11 @@ function creareGame() {
     setTimeout(() => {
         cards.forEach((el, i) => {
             const card = board.querySelector(`.card:nth-child(${i + 1})`)
-            const delay = i * 30
+            const delay = i * 40
             setTimeout(() => {
                 card.classList.add('cover')
                 card.dataset.active = el.active
+                battery.currentTime = 0
                 battery.play()
             }, delay)
         })
@@ -113,6 +115,11 @@ function creareGame() {
             lifesaver = document.querySelector('.lifesaver')
             lifesaver.addEventListener('click', lifesaverFunction)
         }, coverDelay)
+
+        ButtonsBox.innerHTML = `<button class="reset-button play-button">RESET</button>`
+        const resetGameButton = document.querySelector('.reset-button')
+        resetGameButton.addEventListener('click', resetGame)
+
     }, 7000)
 }
 
@@ -128,7 +135,6 @@ function compareCards() {
             ((card1.dataset.number === '0' && card2.dataset.number === '1') ||
                 (card1.dataset.number === '1' && card2.dataset.number === '0'));
         if (!isMatch) {
-
             inArow = 0
             inArowCount.innerHTML = inArow
             cardsToCompare.forEach(el => {
@@ -237,6 +243,28 @@ function gameOver() {
 
     });
 }
+
+function resetGame() {
+    console.log('reset called')
+    if (isGameResetting) {
+        return
+    }
+    clearInterval(timer)
+    isGameResetting = true
+    isRunningGame = true
+    lifesaverBox.innerHTML = ''
+    bell.play()
+    seconds = 180
+    endGameTruck = 0
+    atemptsCount = 0
+    inArow = 0
+    playGame()
+    setTimeout(() => {
+        isGameResetting = false;
+    }, 7500)
+}
+
+
 
 function cronoGame() {
 

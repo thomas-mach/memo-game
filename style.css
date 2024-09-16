@@ -3,7 +3,7 @@
     --color-secondary: rgba(113, 152, 203, 0.7);
     --color-dark: #080e18;
     --color-light: #0c1321;
-    --color-overlay: rgba(0, 0, 0, 0.7);
+    --color-overlay: rgba(0, 0, 0, 0.8);
     --color-red: red;
 }
 
@@ -24,7 +24,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 100;
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
@@ -39,11 +39,10 @@
     align-items: center;
     font-size: 70px;
     gap: 30px;
-    color: var(--color-red);
+    color: var(--color-primary);
     background-color: grey;
     margin: 15% auto;
     padding: 20px;
-    border: 30px var(--color-red);
     user-select: none;
 }
 
@@ -216,6 +215,7 @@
     justify-content: space-between;
     color: var(--color-secondary);
     font-size: 14px;
+    padding: 0 10px
 }
 
 /* UTILITY */
@@ -223,7 +223,7 @@
 .flex-center {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
 }
 
 /* LAYOUT */
@@ -328,6 +328,10 @@ footer {
     .modal-content {
         max-width: 95vw;
         font-size: 45px;
+    }
+
+    .play-button {
+        align-self: center;
     }
 
     body {
