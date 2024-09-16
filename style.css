@@ -319,6 +319,11 @@ footer {
         justify-content: center;
     }
 
+    body {
+        height: 100svh;
+        overflow: hidden;
+    }
+
     footer {
         padding: 0px 5px;
 
