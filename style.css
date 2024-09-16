@@ -1,6 +1,6 @@
 :root {
     --color-primary: #ffbe1a;
-    --color-secondary: rgba(73, 110, 158, 0.5);
+    --color-secondary: rgba(113, 152, 203, 0.7);
     --color-dark: #080e18;
     --color-light: #0c1321;
     --color-overlay: rgba(0, 0, 0, 0.7);
@@ -252,10 +252,6 @@ footer {
 /* MEDIA QUERY */
 
 @media screen and (max-width: 767px) {
-    .container {
-        width: 300px;
-    }
-
     .game-container {
         flex-direction: column;
     }
@@ -319,7 +315,12 @@ footer {
         justify-content: center;
     }
 
+    .time-bar-placeholder {
+        width: 300px;
+    }
+
     body {
+
         height: 100svh;
         overflow: hidden;
     }
@@ -336,4 +337,5 @@ footer {
     header {
         height: 10%;
     }
+
 }
