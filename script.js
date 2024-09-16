@@ -84,7 +84,6 @@ function creareGame() {
                     return
                 }
                 if (!card.classList.contains('cover') || cardsToCompare.length >= 2) {
-                    return
                 }
                 click.play()
                 card.classList.remove('cover')

@@ -40,7 +40,7 @@
     font-size: 70px;
     gap: 30px;
     color: var(--color-red);
-    background-color: var(--color-secondary);
+    background-color: grey;
     margin: 15% auto;
     padding: 20px;
     border: 30px var(--color-red);
@@ -168,6 +168,10 @@
     color: var(--color-dark);
 }
 
+.logo {
+    font-size: 0;
+}
+
 .logo span {
     user-select: none;
     font-size: 120px;
@@ -210,6 +214,8 @@
 .footer-info {
     display: flex;
     justify-content: space-between;
+    color: var(--color-secondary);
+    font-size: 14px;
 }
 
 /* UTILITY */
@@ -317,6 +323,11 @@ footer {
 
     .time-bar-placeholder {
         width: 300px;
+    }
+
+    .modal-content {
+        max-width: 95vw;
+        font-size: 45px;
     }
 
     body {
