@@ -1,0 +1,320 @@
+:root {
+    --color-primary: #ffbe1a;
+    --color-secondary: rgba(73, 110, 158, 0.5);
+    --color-dark: #080e18;
+    --color-light: #0c1321;
+    --color-overlay: rgba(0, 0, 0, 0.7);
+    --color-red: red;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Source Code Pro", monospace;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-overlay);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    gap: 30px;
+    color: var(--color-red);
+    background-color: var(--color-secondary);
+    margin: 15% auto;
+    padding: 20px;
+    border: 30px var(--color-red);
+    user-select: none;
+}
+
+.time-bar-placeholder {
+    width: 600px;
+    height: 5px;
+    display: flex;
+    align-self: flex-start;
+}
+
+.time-bar {
+    width: 600px;
+    height: 5px;
+    background-color: var(--color-red);
+    transition: width 7s linear;
+}
+
+.time-bar2 {
+    width: 600px;
+    height: 5px;
+    background-color: var(--color-red);
+    transition: width 3s linear;
+}
+
+.time-bar.shrink,
+.time-bar2.shrink {
+    width: 0;
+}
+
+.game-container {
+    display: flex;
+}
+
+.board {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    cursor: pointer;
+    border: 1px solid var(--color-secondary);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+}
+
+.card-hover {
+    background-color: var(--color-dark) !important;
+    color: var(--color-dark);
+}
+
+.cover {
+    background-color: var(--color-light);
+    z-index: 10;
+}
+
+.match-icon-color {
+    background-color: var(--color-dark) !important;
+    color: var(--color-primary) !important;
+}
+
+.game-info {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 300px;
+    height: 600px;
+    font-size: 28px;
+    color: var(--color-secondary);
+    user-select: none;
+}
+
+.lifesaver {
+    color: var(--color-primary);
+    font-size: 50px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.lifesaver:hover {
+    transform: rotate(180deg);
+}
+
+.lifesaver-box {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.play-button-box {
+    flex-grow: 2;
+    display: flex;
+}
+
+.play-button {
+    align-self: flex-end;
+    width: 200px;
+    height: 40px;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-dark);
+    color: var(--color-primary);
+    font-size: 28px;
+    cursor: pointer;
+    background-image: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) 50%, var(--color-dark) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.3s linear;
+}
+
+.play-button:hover {
+    background-position: 0 0;
+    color: var(--color-dark);
+}
+
+.logo span {
+    user-select: none;
+    font-size: 120px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+}
+
+.logo-face {
+    z-index: 1000;
+    position: relative;
+}
+
+.logo-under {
+    width: 100px;
+    height: 50px;
+    background-color: var(--color-red);
+    position: absolute;
+    top: 30px;
+    left: 227px;
+    z-index: 999;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.logo-under.logo-opacity {
+    opacity: 1;
+}
+
+.logo span:first-child {
+    color: var(--color-primary);
+}
+
+.logo span:nth-child(2) {
+    color: var(--color-secondary);
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* UTILITY */
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LAYOUT */
+
+body {
+    height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    height: 100%;
+}
+
+main {
+    width: 100%;
+    height: 75%;
+    background-color: var(--color-dark);
+}
+
+header {
+    width: 100%;
+    height: 20%;
+    background-color: var(--color-dark);
+}
+
+footer {
+    width: 100%;
+    height: 5%;
+    background-color: var(--color-dark);
+}
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 767px) {
+    .game-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    .board {
+        width: 360px;
+        height: 360px;
+    }
+
+    .time-bar,
+    .time-bar2 {
+        width: 360px;
+    }
+
+    .board-box {
+        flex-direction: column;
+    }
+
+    .game-info {
+        margin-top: 10px;
+        padding: 0;
+        gap: 0px;
+        width: 360px;
+        height: 260px;
+        font-size: 24px;
+    }
+
+    .game {
+        width: 360px;
+    }
+
+    .logo span {
+        font-size: 80px;
+    }
+
+    .logo-under {
+        top: 20px;
+        left: 150px;
+        width: 60px;
+        height: 30px;
+    }
+
+    .lifesaver {
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    .lifesaver-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .play-button-box {
+        justify-content: center;
+    }
+
+    footer {
+        padding: 0px 5px;
+    }
+}
