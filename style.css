@@ -281,12 +281,12 @@ footer {
     }
 
     .game-info {
-        margin-top: 10px;
+        margin-top: 6px;
         padding: 0;
         gap: 0px;
         width: 300px;
-        height: 260px;
-        font-size: 24px;
+        height: 180px;
+        font-size: 18px;
     }
 
     .game {
@@ -294,19 +294,20 @@ footer {
     }
 
     .logo span {
-        font-size: 60px;
+        font-size: 50px;
     }
 
     .logo-under {
-        top: 20px;
-        left: 118px;
-        width: 45px;
-        height: 20px;
+        top: 16px;
+        left: 94px;
+        width: 42px;
+        height: 16px;
     }
 
     .lifesaver {
         align-self: center;
-        margin-top: 10px;
+        margin-top: 6px;
+        font-size: 40px;
     }
 
     .lifesaver-box {
