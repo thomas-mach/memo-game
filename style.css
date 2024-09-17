@@ -74,6 +74,7 @@
 
 .game-container {
     display: flex;
+
 }
 
 .board {
@@ -260,6 +261,7 @@ footer {
 @media screen and (max-width: 767px) {
     .game-container {
         flex-direction: column;
+        height: 100%;
     }
 
     .card {
@@ -283,6 +285,8 @@ footer {
     }
 
     .game-info {
+        justify-content: space-around;
+        flex-grow: 10;
         margin-top: 6px;
         padding: 0;
         gap: 0px;
@@ -292,6 +296,7 @@ footer {
     }
 
     .game {
+        height: 100%;
         width: 300px;
     }
 
@@ -308,17 +313,19 @@ footer {
 
     .lifesaver {
         align-self: center;
-        margin-top: 6px;
-        font-size: 40px;
+        font-size: 50px;
     }
 
     .lifesaver-box {
+        height: 50px;
         display: flex;
         justify-content: center;
     }
 
     .play-button-box {
-        justify-content: center;
+        flex-grow: 0;
+        flex-direction: column;
+
     }
 
     .time-bar-placeholder {
@@ -352,5 +359,4 @@ footer {
     header {
         height: 10%;
     }
-
 }

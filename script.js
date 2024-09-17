@@ -8,21 +8,22 @@ const battery = new Audio("./mp3/battery.mp3")
 const bell = new Audio("./mp3/bells_bell.mp3")
 const match = new Audio("./mp3/style_coin.mp3")
 const lose = new Audio("./mp3/lose.mp3")
+
 const ButtonsBox = document.querySelector('.play-button-box')
-// const resetGameButton = document.querySelector('.reset-button')
 const timeBar = document.querySelector('.time-bar-placeholder')
 const board = document.querySelector('.board')
 const atempts = document.querySelector('.atempts')
 const crono = document.querySelector('.crono')
 const inArowCount = document.querySelector('.in-a-row')
 const lifesaverBox = document.querySelector('.lifesaver-box')
-let isGameResetting = false;
-let lifesaver = ''
+
 let cardsToCompare = []
+let isRunningGame = false
+let isGameResetting = false;
 let isChacking = false
 let isRunning = false
-let isRunningGame = false
 let lifesaverTruck = false
+let lifesaver = ''
 let timer
 let seconds = 180
 let endGameTruck = 0
@@ -80,23 +81,18 @@ function createGame() {
             card.addEventListener('click', () => {
                 card.classList.remove('card-hover')
                 card.dataset.active = 'true';
-                if (isChacking) {
-                    return
-                }
-                // if (!card.classList.contains('cover') || cardsToCompare.length >= 2) {
-                // }
+                if (isChacking) { return }
                 click.currentTime = 0
                 click.play();
                 card.classList.remove('cover')
-                activeCard(i)
                 pushCard(cardsToCompare, card)
                 compareCards()
             });
-        }, 4200)
+        }, 8700)
         board.appendChild(card)
     });
 
-    const coverDelay = cards.length * 40
+    const coverDelay = cards.length * 40 + 300
 
     setTimeout(() => {
         cards.forEach((el, i) => {
@@ -121,10 +117,6 @@ function createGame() {
         resetGameButton.addEventListener('click', resetGame)
 
     }, 7000)
-}
-
-function activeCard(index) {
-    cards[index].active = true
 }
 
 function compareCards() {
@@ -161,11 +153,12 @@ function compareCards() {
             document.querySelector('.logo-under').classList.add('logo-opacity');
             setTimeout(() => {
                 document.querySelector('.logo-under').classList.remove('logo-opacity');
-
             }, 1000)
+
             endGameTruck++
             endGame()
         }
+
         setTimeout(() => {
             cardsToCompare = []
             isChacking = false
@@ -197,14 +190,6 @@ function pushCard(array, el) {
     if (array.length < 2) {
         array.push(el)
     }
-}
-
-function showConfetti() {
-    confetti({
-        particleCount: 200,  // Numero di particelle
-        spread: 120,          // Spread dell'esplosione
-        origin: { y: 0.6 }   // Punto di origine (60% dall'alto)
-    });
 }
 
 function endGame() {
@@ -240,15 +225,12 @@ function gameOver() {
         atemptsCount = 0
         inArow = 0
         playGame()
-
     });
 }
 
 function resetGame() {
-    console.log('reset called')
-    if (isGameResetting) {
-        return
-    }
+    if (lifesaverTruck) { return }
+    if (isGameResetting) { return }
     clearInterval(timer)
     isGameResetting = true
     isRunningGame = true
@@ -261,24 +243,18 @@ function resetGame() {
     playGame()
     setTimeout(() => {
         isGameResetting = false;
-    }, 7500)
+    }, 8440)
 }
-
-
-
 function cronoGame() {
-
     function updateDisplay() {
         const minutes = Math.floor(seconds / 60);
         const sec = seconds % 60;
         crono.textContent = `${minutes.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     }
-
     if (!isRunning) {
         timer = setInterval(() => {
             seconds--;
             updateDisplay();
-
             if (seconds <= 0) {
                 clearInterval(timer); // Ferma il timer quando il conto alla rovescia arriva a 0
                 isRunning = false;
@@ -287,7 +263,6 @@ function cronoGame() {
         }, 1000);
     }
 }
-
 
 function lifesaverFunction() {
     click2.play()
@@ -308,6 +283,14 @@ function lifesaverFunction() {
             lifesaverTruck = false
         });
     }, 3000);
+}
+
+function showConfetti() {
+    confetti({
+        particleCount: 200,  // Numero di particelle
+        spread: 120,          // Spread dell'esplosione
+        origin: { y: 0.6 }   // Punto di origine (60% dall'alto)
+    });
 }
 
 
