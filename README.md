@@ -2,7 +2,7 @@
 
 Un classico gioco di memoria (Memo Game) sviluppato in JavaScript, HTML e CSS per esercitarmi nella creazione di giochi interattivi basati su griglie. Testa la tua memoria abbinando tutte le carte nel minor tempo possibile!
 
-## [Gioca ora](https://thomas-mach.github.io/memo-game/)
+👉 [Gioca ora](https://thomas-mach.github.io/memo-game/) 👈
 
 ## Caratteristiche 🛠
 
